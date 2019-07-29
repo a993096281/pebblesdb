@@ -80,3 +80,5 @@ gdb.txt
 .settings/
 nbproject/
 CMakeFiles
+Latency.csv
+result/
