@@ -18,8 +18,6 @@ bench_benchmarks="fillrandom,stats"
 bench_num="20000000"
 bench_readnum="1000000"
 
-report_write_latency="1"
-
 
 bench_file_path="$PWD/db_bench"
 bench_file_dir="$PWD"
@@ -30,7 +28,7 @@ bench_file_dir="$(dirname $PWD )"
 fi
 
 if [ ! -f "${bench_file_path}" ];then
-echo "Error:${bench_file_path} or $(dirname $PWD )/out-static/db_bench not find!"
+echo "Error:${bench_file_path} or $(dirname $PWD )/db_bench not find!"
 exit 1
 fi
 
@@ -42,7 +40,6 @@ RUN_ONE_TEST() {
         --num=$bench_num \
         --reads=$bench_readnum \
         --write_buffer_size=$write_buffer_size \
-        --report_write_latency=$report_write_latency \
     "
     cmd="$bench_file_path $const_params >>out.out 2>&1"
     echo $cmd >out.out

@@ -30,7 +30,7 @@ bench_file_dir="$(dirname $PWD )"
 fi
 
 if [ ! -f "${bench_file_path}" ];then
-echo "Error:${bench_file_path} or $(dirname $PWD )/out-static/db_bench not find!"
+echo "Error:${bench_file_path} or $(dirname $PWD )/db_bench not find!"
 exit 1
 fi
 

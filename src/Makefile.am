@@ -111,6 +111,8 @@ noinst_HEADERS += util/string_builder.h
 noinst_HEADERS += util/testharness.h
 noinst_HEADERS += util/testutil.h
 noinst_HEADERS += util/my_log.h
+noinst_HEADERS += util/zipf.h
+noinst_HEADERS += util/rate_limiter.h
 
 lib_LTLIBRARIES = libpebblesdb.la
 
@@ -156,6 +158,9 @@ libpebblesdb_la_SOURCES += util/logging.cc
 libpebblesdb_la_SOURCES += util/options.cc
 libpebblesdb_la_SOURCES += util/status.cc
 libpebblesdb_la_SOURCES += util/my_log.cc
+libpebblesdb_la_SOURCES += util/zipf.cc
+libpebblesdb_la_SOURCES += util/rate_limiter.cc
+
 libpebblesdb_la_SOURCES += port/port_posix.cc
 libpebblesdb_la_LIBADD = $(SNAPPY_LIBS) -lpthread -lsnappy
 libpebblesdb_la_LDFLAGS = -lpthread -lsnappy $(AM_LDFLAGS) $(LDFLAGS)
