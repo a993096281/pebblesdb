@@ -62,7 +62,7 @@ static double MaxBytesForLevel(unsigned level) {
                                  32768 * 1048576.0,
                                  262144 * 1048576.0,
                                  2097152 * 1048576.0};
-  return bytes[level];
+  return 10 *bytes[level];
 }
 
 static double MinBytesForLevel(unsigned level) {
@@ -74,7 +74,7 @@ static double MinBytesForLevel(unsigned level) {
                                  1024 * 1048576.0,
                                  2048 * 1048576.0,
                                  0 * 1048576.0};
-  return bytes[level];
+  return 10*bytes[level];
 }
 
 static double MaxBytesPerGuardForLevel(unsigned level) {
@@ -86,7 +86,7 @@ static double MaxBytesPerGuardForLevel(unsigned level) {
                                  512 * 1048576.0,
                                  1024 * 1048576.0,
                                  2048 * 1048576.0};
-  return bytes[level];
+  return 2*bytes[level];
 }
 
 static uint64_t MinFileSizeForLevel(unsigned level) {
@@ -110,7 +110,7 @@ static uint64_t MaxFileSizeForLevel(unsigned level) {
                                    128 * 1048576,
                                    256 * 1048576,
                                    512 * 1048576};
-  return bytes[level];
+  return 10*bytes[level];
 }
 
 static int MaxFilesPerGuardForLevel(unsigned level) {
