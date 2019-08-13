@@ -1490,7 +1490,7 @@ class Benchmark {
 // Thread 1 -- the workload threads. Control request speed and push request to queues
 // Thread REQUEST_QUEUE 2 ~ REQUEST_QUEUE -- pop request from queues and put in db
   void FillRandomControlRequest(ThreadState* thread) {
-    printf("test:start %d\n",thread->tid);
+    
     if( thread->shared->total < REQUEST_QUEUE + 2 ) {
       printf("Error:Test FillRandomControlRequest need %d threads\n",REQUEST_QUEUE + 2);
       return;
@@ -1567,11 +1567,9 @@ class Benchmark {
       bool push_ok = false;
 
       RateLimiter* request_rate_limiter = nullptr;
-      //if(FLAGS_request_rate_limit > 0 ) {
-        //printf("request_rate_limiter start\n");
-        //request_rate_limiter = NewGenericRateLimiter(FLAGS_request_rate_limit);
-      //} 
-      //printf("request_rate_limiter ok\n");
+      if(FLAGS_request_rate_limit > 0 ) {
+        request_rate_limiter = NewGenericRateLimiter(FLAGS_request_rate_limit);
+      } 
       
 
       while(done < num) {
@@ -1586,9 +1584,9 @@ class Benchmark {
           done++;
           thread->shared->request_num++;
           push_ok = false;
-          /* if(request_rate_limiter != nullptr ) {
+          if(request_rate_limiter != nullptr ) {
             request_rate_limiter->Request(1, IO_HIGH, nullptr , RateLimiter::OpType::kWrite);
-          } */
+          }
         }
         queue_index = (queue_index + 1) % REQUEST_QUEUE;
         //uint64_t sleep_time = 1000000/FLAGS_request_rate_limit;
@@ -1598,9 +1596,9 @@ class Benchmark {
         //uint64_t et = FLAGS_env->NowMicros();
         //printf("sleep_time:%lu\n",et - st);
       }
-      /* if(request_rate_limiter != nullptr){
+      if(request_rate_limiter != nullptr){
         delete request_rate_limiter;
-      }  */
+      } 
       
     }
     else if ( thread->tid > 1 ) { //Put db

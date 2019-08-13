@@ -71,12 +71,10 @@ GenericRateLimiter::GenericRateLimiter(int64_t rate_bytes_per_sec,
       prev_num_drains_(0),
       max_bytes_per_sec_(rate_bytes_per_sec),
       tuned_time_(NowMicrosMonotonic(env_)) {
-  printf("ok1\n");
   total_requests_[0] = 0;
   total_requests_[1] = 0;
   total_bytes_through_[0] = 0;
   total_bytes_through_[1] = 0;
-  printf("ok2\n");
 }
 
 GenericRateLimiter::~GenericRateLimiter() {

@@ -82,3 +82,8 @@ nbproject/
 CMakeFiles
 Latency.csv
 result/
+PerSecondLatency.csv
+OP_DATA
+OP_TIME.csv
+compaction.csv
+
